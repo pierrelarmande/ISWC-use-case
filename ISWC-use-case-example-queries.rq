@@ -21,7 +21,26 @@ SELECT distinct ?QTL ?Label ?trait_label ?chr
 }
 
 
-# Query 2 # Retrieve all genes (select) with Trait ontology containing value panicle = 1 result
+# Query 2 # Retrieve all genes (select) with Trait ontology containing value panicle all along the chromosome 2 = 15 results
+BASE <http://www.southgreen.fr/agrold/>
+PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+PREFIX vocab:<vocabulary/>
+SELECT distinct ?genes   FROM <qtaro.genes># ?trait ?chr ?start ?trait_label ?chr
+ WHERE {
+        ?genes rdfs:label ?Label;
+             vocab:is_located_on ?chr;
+             vocab:has_start_position ?start;
+             vocab:has_end_position ?end.
+  Optional {
+          ?genes   vocab:has_trait ?trait.
+  }
+  FILTER(REGEX(str(?trait), "panicle", "i"))
+  FILTER((?chr="4"))
+  
+}
+
+# Query 3 # Retrieve all genes (select) narrowing down a 30 Mbases regiong with Trait ontology containing value panicle = 1 result
 BASE <http://www.southgreen.fr/agrold/>
 PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
@@ -48,7 +67,7 @@ FILTER(xsd:int(?nb) = 4 )
 }
 
 
-# Query 3 # Retrieve all genes (select) with Trait ontology containing value panicle = 81 results
+# Query 3 # Retrieve all genes (select) narrowing down a 30 Mbases regiong = 81 results
 BASE <http://www.southgreen.fr/agrold/>
 PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
