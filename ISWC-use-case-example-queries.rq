@@ -67,7 +67,7 @@ FILTER(xsd:int(?nb) = 4 )
 }
 
 
-# Query 3 # Retrieve all genes (select) narrowing down a 30 Mbases regiong = 81 results
+# Query 4 # Retrieve all genes (select) narrowing down a 30 Mbases regiong = 81 results
 BASE <http://www.southgreen.fr/agrold/>
 PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
